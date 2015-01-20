@@ -1,6 +1,6 @@
 receiptStore = new FS.Store.GridFS("receiptStore");
 
-@Receipts = new FS.Collection "recipts",
+@Receipts = new FS.Collection "receipts",
   stores: [receiptStore]
   filter: 
     allow: 

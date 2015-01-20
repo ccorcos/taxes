@@ -6,7 +6,7 @@ Meteor.publishComposite 'records', () ->
         Records.find {ownerId: @userId}
       children: [{
         find: (record) ->
-          if record.receiptId?
+          if record?.receiptId?
             Receipts.find record.receiptId
         }]}
 
@@ -17,6 +17,6 @@ Meteor.publishComposite 'record', (id) ->
         Records.find {ownerId: @userId, _id:id}
       children: [{
         find: (record) ->
-          if record.receiptId?
+          if record?.receiptId?
             Receipts.find record.receiptId
         }]}

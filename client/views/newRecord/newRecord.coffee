@@ -26,6 +26,7 @@ Template.newRecord.events
         error err.reason
       else
         Meteor.call 'newRecord', note, amount, fileObj._id
+        Router.go 'home'
         
   'click .cancel': (e,t) ->
     Router.go 'home'

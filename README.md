@@ -1,9 +1,10 @@
 # Taxes
 
-
-newRecord
-category
-list of records
-view record
-delete record
-export
+category select box!
+export images with zip.
+better styles
+settings:
+  logout
+  export
+  delete data
+  delete account

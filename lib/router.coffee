@@ -18,7 +18,7 @@ Router.onBeforeAction ->
     else
       @next()
   , 
-    except: ['login', 'signup', 'forgot', 'reset']
+    except: ['login', 'signup', 'forgot', 'reset', 'zip']
 
   
 Router.route 'home',
@@ -50,7 +50,30 @@ Router.route 'reset',
     Session.set 'resetPasswordToken', @params.id
     @next()
 
+Router.route 'zip',
+  where: 'server'
+  path: 'zip'
+  action: ->
+    if @request.cookies.meteor_login_token
+      u = Meteor.users.findOne({"services.resume.loginTokens.hashedToken": Accounts._hashLoginToken(@request.cookies.meteor_login_token)})
+      
+      zip = new JSZip()
+      csv = "Date, Note, Amount, ReceiptId\n"
+      for record in Records.find({ownerId:u._id}).fetch()
+        csv += "#{Date.create(record.date).format('{yy}/{MM}/{dd} {HH}:{mm}')}, #{record.note}, $#{record.amount.format(2)}, #{record.receiptId}\n"
+      
+      zip.file('data.csv', csv)
 
-# just so you can see them if you want
-Router.route 'loading'
-Router.route 'notFound'
+      output = zip.generate
+        type:        "nodebuffer"
+        compression: "DEFLATE"
+
+      # Set headers
+      @response.setHeader("Content-Type", "application/octet-stream")
+      @response.setHeader("Content-disposition", "attachment; filename=export.zip")
+      @response.writeHead(200)
+
+      # Send content
+      @response.end(output)
+    else
+      return false
