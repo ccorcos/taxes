@@ -36,3 +36,18 @@
   # Trim and validate
   re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
   return re.test(email)
+
+@NonEmptyString = Match.Where (x) ->
+  check(x, String)
+  x.length > 0
+
+@NumberInRange = (min, max) ->
+  Match.Where (x) ->
+    check(x, Number)
+    x >= min and x <= max
+
+@OneOf = (values...) -> Match.Where (x) -> _.contains values, x
+
+@Is = (value) -> Match.Where (x) -> x is value
+
+@ZipCode = Match.Where (string) -> string.match(new RegExp("^\\d{5}(-\\d{4})?$"))

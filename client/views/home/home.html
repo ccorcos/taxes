@@ -3,19 +3,17 @@
     <div class="nav">
       <div class="title">Taxes</div>
       <div class="right new"><span class="entypo plus newRecord"></span></div>
-      <div class="left logout"><span class="entypo logout logout"></span></div>
+      <div class="left settings"><span class="entypo user"></span></div>
     </div>
-    <div class="content under-nav above-toolbar">
+    <div class="content under-nav">
       {{#each records}}
         <div class="record-item">
           <div class="date">{{formatDate date}}</div>
+          <div class="category">{{category}}</div>
           <div class="note">{{formatNote}}</div>
           <div class="amount">${{formatAmount amount}}</div>
         </div>
       {{/each}}
-    </div>
-    <div class="toolbar">
-      <div class="export">export to .zip</div>
     </div>
   </div>
 </template>

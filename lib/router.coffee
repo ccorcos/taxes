@@ -30,6 +30,8 @@ Router.route 'home',
 Router.route 'newRecord',
   path: 'new'
 
+Router.route 'settings'
+
 Router.route 'record',
   path: 'record/:_id'
   waitOn: ->

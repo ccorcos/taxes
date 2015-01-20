@@ -2,3 +2,5 @@
 @_ = _.extend lodash, _
 
 # _.str.lower = (string) -> string.toLowerCase()
+
+@categories = ['travel', 'research', 'education', 'supplies', 'fees', 'entertainment']

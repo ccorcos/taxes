@@ -11,7 +11,5 @@ Template.home.events
     Router.go 'newRecord'
   'click .record-item': (e,t) ->
     Router.go 'record', {_id: @_id}
-  'click .logout': (e,t) ->
-    Meteor.logout()
-  'click .export': (e,t) ->
-    Router.go 'zip'
+  'click .settings': (e,t) ->
+    Router.go 'settings'
