@@ -1,53 +1,22 @@
 
-Meteor.publishComposite 'users', () ->
+Meteor.publishComposite 'records', () ->
   if @userId
     return {
       find: ->
-        Meteor.users.find {}, 
-          fields:
-            _id: 1
-            username: 1
-            score: 1
-            imgId: 1
+        Records.find {ownerId: @userId}
       children: [{
-        find: (user) ->
-          if user.imgId?
-            Images.find(user.imgId)
+        find: (record) ->
+          if record.receiptId?
+            Receipts.find record.receiptId
         }]}
 
-Meteor.publishComposite 'user', (userId) ->
+Meteor.publishComposite 'record', (id) ->
   if @userId
     return {
       find: ->
-        Meteor.users.find {_id:userId}, 
-          fields:
-            _id: 1
-            username: 1
-            score: 1
-            imgId: 1
+        Records.find {ownerId: @userId, _id:id}
       children: [{
-        find: (user) ->
-          if user.imgId?
-            Images.find(user.imgId)
+        find: (record) ->
+          if record.receiptId?
+            Receipts.find record.receiptId
         }]}
-
-
-# Meteor.publish 'users', -> 
-#   # must be logged in!
-#   if @userId 
-#     return Meteor.users.find {}, 
-#       fields:
-#         _id: 1
-#         username: 1
-#         score: 1
-#         imgId: 1
-
-# Meteor.publish 'user', (userId)-> 
-#   # must be logged in!
-#   if @userId 
-#     return Meteor.users.find {_id:userId}, 
-#       fields:
-#         _id: 1
-#         username: 1
-#         score: 1
-#         imgId: 1

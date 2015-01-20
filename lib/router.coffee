@@ -21,18 +21,22 @@ Router.onBeforeAction ->
     except: ['login', 'signup', 'forgot', 'reset']
 
   
-Router.route 'leaderboard',
+Router.route 'home',
   path: '/'
   waitOn: -> 
     if Meteor.userId()
-      return subs.subscribe 'users'
+      return subs.subscribe 'records'
 
+Router.route 'newRecord',
+  path: 'new'
 
-Router.route 'settings',
-  waitOn: -> 
+Router.route 'record',
+  path: 'record/:_id'
+  waitOn: ->
     if Meteor.userId()
-      return subs.subscribe 'user', Meteor.userId()
-
+      return subs.subscribe 'record', @params._id
+  data: ->
+    Records.findOne(@params._id)
 
 Router.route 'login'
 Router.route 'signup'
@@ -45,7 +49,6 @@ Router.route 'reset',
       @redirect 'leaderboard'
     Session.set 'resetPasswordToken', @params.id
     @next()
-
 
 
 # just so you can see them if you want

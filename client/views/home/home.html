@@ -1,0 +1,17 @@
+<template name="home">
+  <div class="page home">
+    <div class="nav">
+      <div class="title">Taxes</div>
+      <div class="right new"><span class="entypo plus newRecord"></span></div>
+    </div>
+    <div class="content under-nav">
+      {{#each records}}
+        <div class="record-item">
+          <div class="date">{{formatDate date}}</div>
+          <div class="note">{{formatNote}}</div>
+          <div class="amount">${{formatAmount amount}}</div>
+        </div>
+      {{/each}}
+    </div>
+  </div>
+</template>

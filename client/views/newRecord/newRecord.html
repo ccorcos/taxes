@@ -1,0 +1,17 @@
+<template name="newRecord">
+  <div class="page newRecord">
+    <div class="nav">
+      <div class="left"><span class="entypo cross cancel"></span></div>
+      <div class="title">New Record</div>
+    </div>
+    <div class="content under-nav">
+      <form id="record">
+        <input type="text" name="note" placeholder="note" autocorrect="off" autocapitalize="off">
+        <input type="decimal" name="amount" placeholder="$0.00" autocorrect="off" autocapitalize="off">
+        <input type="file" name="receipt" accept="image/*">
+        <div class="error">{{error}}</div>
+        <button type="submit">Submit</button>
+      </form>
+    </div>
+  </div>
+</template>

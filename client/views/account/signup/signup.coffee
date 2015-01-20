@@ -5,10 +5,13 @@ Template.signup.events
   'submit form#signup': formSubmit (e, t, values) ->
    
     # Trim and validate
-    username = _.str.trim values.username
     email = _.str.trim values.email
     password = values.password
     verify = values.verify
+
+    unless validEmail(email)
+      error("Invalid email address.")
+      return
 
     if password != verify
       error "Passwords do not match."
@@ -19,7 +22,7 @@ Template.signup.events
       return
 
     Accounts.createUser
-      username: username
+      username: email
       email: email
       password: password
     ,

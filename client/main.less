@@ -41,12 +41,9 @@ body {
 }
 
 
-@import "views/leaderboard/leaderboard.import.less";
 @import "views/account/account.import.less";
-@import "views/settings/settings.import.less";
 @import "styles/input.import.less";
 @import "components/loader.import.less";
-@import "components/thumbnail/thumbnail.import.less";
 
 
 .yield {
@@ -190,5 +187,66 @@ body {
     width: 100%;
     font-family: monospace;
     font-size: 64px;
+  }
+}
+
+.page.newRecord {
+  .content {
+    padding-top: 15px;
+  }
+}
+
+.error {
+  color: @color4;
+  text-align: center;
+}
+
+.record-item {
+  padding: 10px 15px;
+  border-bottom: 1px #555 solid;
+
+  display: block;
+  position: relative;
+  cursor: pointer;
+
+  .date {
+
+  }
+  .note {
+
+  }
+  .amount {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+  }
+
+}
+
+.record {
+  .content  {
+    padding: 10px 15px;
+    border-bottom: 1px #555 solid;
+
+    display: block;
+    position: relative;
+
+    .date {
+      margin-bottom: 5px;
+    }
+    .note {
+
+    }
+    .amount {
+      position: absolute;
+      top: 10px;
+      right: 15px;
+    }
+    .receipt {
+      margin: 10px -15px;
+      img {
+        max-width: 100%;
+      }
+    }
   }
 }

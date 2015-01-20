@@ -1,31 +1,29 @@
-imageStore = new FS.Store.GridFS("images");
+receiptStore = new FS.Store.GridFS("receiptStore");
 
-@Images = new FS.Collection "images", 
-  stores: [imageStore]
+@Receipts = new FS.Collection "recipts",
+  stores: [receiptStore]
   filter: 
     allow: 
       contentTypes: ['image/*']
 
 # has to be your image to maniuplate, and you must be logged in to see images.
-Images.allow
+Receipts.allow
   insert: (userId, doc) ->
-    doc.metadata?.ownerId is userId
-  update: (userId, doc, fields, modifier) ->
-    doc.metadata?.ownerId is userId
+    return true
+  update: ->
+    return true
   remove: (userId, doc) ->
-    doc.metadata?.ownerId is userId
+    Records.findOne({ownerId:userId, receiptId: doc._id})?
   download: (userId, doc) ->
-    userId?
-  
-Meteor.users.helpers
-  img: () ->
-    Images.findOne(@imgId)
+    Records.findOne({ownerId:userId, receiptId: doc._id})?
 
 # when collectionhooks work for collectionfs
-# Images.after.insert (userId, doc) ->
-#   # remove all images attributed to this owner except
-#   # the one that was just added
-#   Also se the user's imgId
-#   Images.remove 
-#     'metadata.ownerId': userId
-#     _id: {$ne: doc._id}
+Receipts.files.before.insert (userId, doc) ->
+  doc.metadata = {ownerId: userId}
+  return doc
+
+@Records = new Mongo.Collection("records")
+
+Records.helpers
+  receipt: () ->
+    Receipts.findOne(@receiptId)
