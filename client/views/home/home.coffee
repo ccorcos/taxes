@@ -1,5 +1,7 @@
 Template.home.helpers
   records: () -> Records.find({}, {sort: {date: -1}})
+  noRecords: () -> 
+    Records.find({}, {sort: {date: -1}}).count() is 0
   formatNote: () ->
     if @note.length > 20
       return @note[0...17] + '...'
