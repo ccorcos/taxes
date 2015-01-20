@@ -28,17 +28,19 @@ Template.newRecord.events
       error "Attach a receipt!"
       return
 
-    Receipts.insert file, (err, fileObj) ->
-      if err
-        console.log err
-        error err.reason
-      else
-        Meteor.call 'newRecord', note, amount, category, fileObj._id, (err) ->
-          if err
-            console.log err
-            error err.reason
-          else
-            Router.go 'home'
+    processImage file, 500, 500, (data) ->
+
+      Receipts.insert data, (err, fileObj) ->
+        if err
+          console.log err
+          error err.reason
+        else
+          Meteor.call 'newRecord', note, amount, category, fileObj._id, (err) ->
+            if err
+              console.log err
+              error err.reason
+            else
+              Router.go 'home'
         
   'click .cancel': (e,t) ->
     Router.go 'home'
