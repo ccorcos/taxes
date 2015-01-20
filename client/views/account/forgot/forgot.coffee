@@ -23,3 +23,6 @@ Template.forgot.events
         else
           noError()
           message "Check your email for a recovery link."
+
+  'click .toLogin': (e,t) ->
+    Router.go 'login'

@@ -1,20 +1,22 @@
 <template name="login">
   <div class="login account page">
     
-    <div class="nav"><span class="title">Login</span></div>
+    <div class="nav">
+      <div class="left exitLogin"><span class="entypo cross"></span></div>
+      <div class="title">Login</div>
+    </div>
 
-    <div class="content under-nav above-toolbar2">
+    <div class="content under-nav above-toolbar">
       <form id="login">
-        <input type="text" name="email" placeholder="email" autocorrect="off" autocapitalize="off">
+        <input type="text" name="username" placeholder="username" autocorrect="off" autocapitalize="off">
         <input type="password" name="password" placeholder="password" autocorrect="off" autocapitalize="off">
         <div class="error">{{error}}</div>
         <button type="submit">login</button>
       </form>
     </div>
 
-    <div class="toolbar2">
+    <div class="toolbar">
       <div class="toForgot">forgot password?</div>
-      <div class="toSignup">signup</div>
     </div>
 
   </div>

@@ -1,9 +1,12 @@
 <template name="signup">
   <div class="signup account page">
     
-    <div class="nav"><span class="title">Signup</span></div>
+    <div class="nav">
+      <div class="left exitSignup"><span class="entypo cross"></span></div>
+      <div class="title">Signup</div>
+    </div>
 
-    <div class="content under-nav above-toolbar">
+    <div class="content under-nav">
       <form id="signup">
         <input type="email" name="email" placeholder="email" autocorrect="off" autocapitalize="off">
         <input type="password" name="password" placeholder="password" autocorrect="off" autocapitalize="off">
@@ -11,10 +14,6 @@
         <div class="error">{{error}}</div>
         <button type="submit">signup</button>
       </form>
-    </div>
-
-    <div class="toolbar">
-      <div class="toLogin">login</div>
     </div>
 
   </div>

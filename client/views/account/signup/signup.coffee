@@ -7,22 +7,8 @@ Template.signup.events
     # Trim and validate
     email = _.str.trim values.email
     password = values.password
-    verify = values.verify
-
-    unless validEmail(email)
-      error("Invalid email address.")
-      return
-
-    if password != verify
-      error "Passwords do not match."
-      return
-
-    if password.length <= 3
-      error "Password must have more than 4 characters."
-      return
 
     Accounts.createUser
-      username: email
       email: email
       password: password
     ,
@@ -32,3 +18,6 @@ Template.signup.events
         else
           noError()
           afterSignup()
+
+  'click .exitSignup': (e,t) ->
+    Router.go 'landing'

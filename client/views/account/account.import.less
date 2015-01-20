@@ -1,14 +1,47 @@
 .account {
 
   .content {
-    margin-top: 15px;
+    padding-top: 15px;
   }
-
+  
   .message {
     text-align: center;
   }
 
-  input {
+  input[type="button"], input[type="submit"], input[type="text"], input[type="password"], input[type="email"], input[type="number"] {
       margin-bottom: 25px;
+  }
+
+  button, input[type="button"], input[type="submit"] {
+    width: 80%;
+    margin-top: 15px;
+    margin-left: 10%;
+    border: 0;
+    margin-bottom: 15px;
+  }
+
+  input[type="submit"], button[type="submit"] {
+    color: @textColor4;
+    background-color: @color4;
+  }
+
+}
+
+.landing {
+  .content {
+    .banner {
+      font-size: 50px;
+      text-align: center;
+      width: 100%;
+      position: absolute;
+      top: ~"calc(50% - 50px)";
+    }
+  }
+}
+
+.signup {
+  .radio {
+    text-align: center;
+    margin-bottom:10px;
   }
 }
