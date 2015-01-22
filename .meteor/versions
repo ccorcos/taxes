@@ -53,6 +53,7 @@ iron:router@1.0.6
 iron:url@1.0.6
 jquery@1.0.2
 json@1.0.2
+keiths:octicons@1.2.2
 launch-screen@1.0.1
 lauricio:less-autoprefixer@1.0.7
 livedata@1.0.12

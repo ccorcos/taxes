@@ -1,18 +1,18 @@
 // primary color, blue
-@color1: #0074D9;
-@textColor1: #FFFFFF;
+@bodyColor: #151515;
+@bodyTextColor: #dddddd;
+
+@color1: #0c0c0c;
+@textColor1: #4d91ea;
 
 // secondary color, green
-@color2: #2ECC40;
-@textColor2: #FFFFFF;
+@textColor2: #8ee478;
 
 // highlight color, yellow
-@color3: #FFDC00;
-@textColor3: #000000;
+@textColor3: #FFDC00;
 
 // highlight color, red
-@color4: #FF4136;
-@textColor4: #FFFFFF;
+@textColor4: #FF4136;
 
 
 @navHeight: 75px;
@@ -21,6 +21,7 @@
 @inputHeight: 40px;
 @buttonHeight: 50px;
 
+@octiconNavSize: 30px;
 
 @font-face {
   font-family: 'roboto';
@@ -35,11 +36,12 @@ html {
   width: 100%;
 }
 body {
+  color: @bodyTextColor;
+  background-color: @bodyColor;
   margin: 0;
   width: 100%;
   font-family: 'roboto', helvetica, sans-serif;;
 }
-
 
 @import "views/account/account.import.less";
 @import "styles/input.import.less";
@@ -106,6 +108,9 @@ body {
     font-size: 2rem;
   }
   .right {
+    .octicon {
+      font-size: @octiconNavSize;
+    }
     color: @textColor1;
     line-height: @navHeight;
     position: absolute;
@@ -118,6 +123,9 @@ body {
     }
   }
   .left {
+    .octicon {
+      font-size: @octiconNavSize;
+    }
     color: @textColor1;
     line-height: @navHeight;
     position: absolute;
@@ -135,17 +143,21 @@ body {
 .toolbar {
   position: absolute;
   bottom: 0;
-  background-color: @color2;
+  background-color: @color1;
   width: 100%;
   text-align: center;
   line-height: @toolbarHeight;
+  * {
+    height: @toolbarHeight;
+    box-sizing: border-box;
+  }
   span {
     display: inline-block;
     vertical-align: middle;
     line-height: normal;
   }
   :nth-child(1) {
-    background-color: @color2;
+    background-color: @color1;
     color: @textColor2;
   }
   :nth-child(2) {
@@ -153,7 +165,7 @@ body {
     color: @textColor1;
   }
   :nth-child(3) {
-    background-color: @color4;
+    background-color: @color1;
     color: @textColor4;
   }
 }
@@ -161,15 +173,15 @@ body {
 .toolbar2 {
   .toolbar;
   height: 2*@toolbarHeight;
+  :nth-child(1) {
+    border-bottom: 2px @bodyColor solid;
+  }
 }
 
 .toolbar3 {
   .toolbar;
   height: 3*@toolbarHeight;
 }
-
-
-
 
 .loading {
   .loader {
@@ -197,7 +209,7 @@ body {
 }
 
 .error {
-  color: @color4;
+  color: @color1;
   text-align: center;
 }
 
@@ -254,12 +266,15 @@ body {
 .settings {
   .content {
     .export {
-      background-color: @color2;
       color: @textColor2;
+      background-color: @color1;
+      border: 1px solid @textColor2;
+
     }
     .logout {
-      background-color: @color3;
       color: @textColor3;
+      background-color: @color1;
+      border: 1px solid @textColor3;
     }
   }
 }

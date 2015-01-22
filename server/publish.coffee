@@ -10,6 +10,8 @@ Meteor.publishComposite 'records', () ->
           if record?.receiptId?
             Receipts.find record.receiptId
         }]}
+  else
+    return {}
 
 Meteor.publishComposite 'record', (id) ->
   if @userId
@@ -21,3 +23,5 @@ Meteor.publishComposite 'record', (id) ->
           if record?.receiptId?
             Receipts.find record.receiptId
         }]}
+  else
+    return {}

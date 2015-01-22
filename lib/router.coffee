@@ -17,15 +17,15 @@ Router.onBeforeAction ->
       @redirect 'landing'
     else
       @next()
-  , 
+  ,
     except: ['landing', 'login', 'signup', 'forgot', 'reset', 'zip']
 
 Router.route 'landing'
 
-  
+
 Router.route 'home',
   path: '/'
-  waitOn: -> 
+  waitOn: ->
     if Meteor.userId()
       return subs.subscribe 'records'
 
@@ -46,6 +46,9 @@ Router.route 'login'
 Router.route 'signup'
 Router.route 'forgot'
 
+Router.route 'loading'
+Router.route 'notfound'
+
 Router.route 'reset',
   path: 'reset/:id'
   onBeforeAction: ->
@@ -60,12 +63,12 @@ Router.route 'zip',
   action: ->
     if @request.cookies.meteor_login_token
       u = Meteor.users.findOne({"services.resume.loginTokens.hashedToken": Accounts._hashLoginToken(@request.cookies.meteor_login_token)})
-      
+
       zip = new JSZip()
       csv = "Date, Note, Amount, ReceiptId\n"
       for record in Records.find({ownerId:u._id}).fetch()
         csv += "#{Date.create(record.date).format('{yy}/{MM}/{dd} {HH}:{mm}')}, #{record.note}, $#{record.amount.format(2)}, #{record.receiptId}\n"
-      
+
       zip.file('data.csv', csv)
 
       output = zip.generate
