@@ -6,7 +6,7 @@ input[type="text"], input[type="password"], input[type="email"] {
   border-radius: 0;
 }
 
-input[type="decimal"] {
+input[type="number"] {
   width: 55px;
   padding-left: 0;
   padding-right: 0;
@@ -14,6 +14,9 @@ input[type="decimal"] {
   color: @bodyTextColor;
   background-color: rgba(0,0,0,0);
   border: none;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
 }
 
 textarea:focus, input:focus{

@@ -17,11 +17,12 @@
         {{/each}}
       </select>
 
-      <div class="money">$<input type="decimal" name="amount" placeholder="0.00" autocorrect="off" autocapitalize="off" value="{{amount}}"></div>
+      <div class="money">$<input type="number" inputmode="numeric" step="0.01" name="amount" placeholder="0.00" autocorrect="off" autocapitalize="off" value="{{amount}}"></div>
 
+      <div class="error">{{error}}</div>
 
       <div class="receipt">
-        <a href="{{receipt.url}}"><img src="{{receipt.url}}"></a>
+        <img src="{{receipt.url}}">
       </div>
       <button class="delete">Delete</button>
     </div>
