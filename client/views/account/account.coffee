@@ -4,4 +4,3 @@
 @afterSignup = ->
   Router.go 'home'
 
-

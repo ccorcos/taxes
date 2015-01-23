@@ -3,6 +3,8 @@ Template.reset.rendered = ->
   noError()
 
 Template.reset.events
+  'click .exitReset': () ->
+    Router.go 'landing'
 
   'submit form#reset': formSubmit (e, t, values) ->
     
@@ -28,6 +30,6 @@ Template.reset.events
           Session.set('resetPasswordToken', null)
           noMessage()
           noError()
-          afterLoginSignup()
+          afterLogin()
 
 

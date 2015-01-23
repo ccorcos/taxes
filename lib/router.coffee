@@ -13,12 +13,24 @@ Router.configure
 # or the user can signup. But the point is that this
 # should reactively update once the user has signed up.
 Router.onBeforeAction ->
+    if Meteor.loggingIn()
+      return
+
     if not Meteor.userId()
       @redirect 'landing'
     else
       @next()
   ,
     except: ['landing', 'login', 'signup', 'forgot', 'reset', 'zip']
+
+Router.onBeforeAction ->
+    if Meteor.loggingIn() or Meteor.userId()
+      @redirect 'home'
+    else
+      @next()
+  ,
+    only: ['landing', 'login', 'signup', 'forgot', 'reset', 'zip']
+
 
 Router.route 'landing'
 
@@ -47,7 +59,7 @@ Router.route 'signup'
 Router.route 'forgot'
 
 Router.route 'loading'
-Router.route 'notfound'
+Router.route 'notFound'
 
 Router.route 'reset',
   path: 'reset/:id'

@@ -7,16 +7,23 @@
     <div class="content under-nav">
       <form id="record">
         <input type="text" name="note" placeholder="note" autocorrect="off" autocapitalize="off">
-        <input type="decimal" name="amount" placeholder="$0.00" autocorrect="off" autocapitalize="off">
 
         <select name="category">
-          <option selected disabled value="">--category--</option>
+          <option selected disabled value="">-- category --</option>
           {{#each categories}}
             <option value="{{this}}">{{this}}</option>
           {{/each}}
         </select>
 
-        <input type="file" name="receipt" accept="image/*">
+        <div class="money">$<input type="decimal" name="amount" placeholder="0.00" autocorrect="off" autocapitalize="off"></div>
+
+
+        <div class="upload">
+          <div class="camera">
+            <span class="mega-octicon octicon-device-camera"></span>
+          </div>
+          <input type="file" name="receipt" accept="image/*">
+        </div>
         <div class="error">{{error}}</div>
         <button type="submit">Submit</button>
       </form>

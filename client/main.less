@@ -23,6 +23,11 @@
 
 @octiconNavSize: 30px;
 
+
+* {
+  box-sizing: border-box;
+}
+
 @font-face {
   font-family: 'roboto';
   src: url('/fonts/roboto/Roboto-Thin.ttf');
@@ -44,6 +49,10 @@ body {
 }
 
 @import "views/account/account.import.less";
+@import "views/home/home.import.less";
+@import "views/newRecord/newRecord.import.less";
+@import "views/record/record.import.less";
+@import "views/settings/settings.import.less";
 @import "styles/input.import.less";
 @import "components/loader.import.less";
 
@@ -202,79 +211,9 @@ body {
   }
 }
 
-.page.newRecord {
-  .content {
-    padding-top: 15px;
-  }
-}
 
-.error {
-  color: @color1;
+.error, .message {
+  color: @bodyTextColor;
   text-align: center;
 }
 
-.record-item {
-  padding: 10px 15px;
-  border-bottom: 1px #555 solid;
-
-  display: block;
-  position: relative;
-  cursor: pointer;
-
-  .date {
-
-  }
-  .note {
-
-  }
-  .amount {
-    position: absolute;
-    top: 10px;
-    right: 15px;
-  }
-
-}
-
-.record {
-  .content  {
-    padding: 10px 15px;
-    border-bottom: 1px #555 solid;
-
-    display: block;
-    position: relative;
-
-    .date {
-
-    }
-    .note {
-
-    }
-    .amount {
-      position: absolute;
-      top: 10px;
-      right: 15px;
-    }
-    .receipt {
-      margin: 10px -15px;
-      img {
-        max-width: 100%;
-      }
-    }
-  }
-}
-
-.settings {
-  .content {
-    .export {
-      color: @textColor2;
-      background-color: @color1;
-      border: 1px solid @textColor2;
-
-    }
-    .logout {
-      color: @textColor3;
-      background-color: @color1;
-      border: 1px solid @textColor3;
-    }
-  }
-}

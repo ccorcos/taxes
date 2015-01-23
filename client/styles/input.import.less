@@ -6,25 +6,60 @@ input[type="text"], input[type="password"], input[type="email"] {
   border-radius: 0;
 }
 
+input[type="decimal"] {
+  width: 55px;
+  padding-left: 0;
+  padding-right: 0;
+  text-align: center;
+  color: @bodyTextColor;
+  background-color: rgba(0,0,0,0);
+  border: none;
+}
+
 textarea:focus, input:focus{
   outline: 0;
 }
 
-
-select, input {
-  width: 100%;
-  height: @inputHeight;
+input {
+  width: 100%; 
+  appearance: none;
   -webkit-appearance: none;
+  -moz-appearance: none;
   padding: 0 15px;
   margin-bottom: 15px;
   line-height: 21px;
-  border: 0;
-  border-bottom: 1px solid #ddd;
-  border-radius: 3px;
   outline: none;
   font-size: inherit;
   font-family: inherit;
+  height: @inputHeight;
+}
+
+select {
+  color: @bodyTextColor;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  font-size: inherit;
+  font-family: inherit;
+  background-color: rgba(0,0,0,0);
+  height: @inputHeight;
+  border-radius: 5px;
+  margin-bottom: 15px;
+  outline: none;
   box-sizing: border-box;
+  border: none;
+  box-shadow: none;
+}
+
+
+select {
+  background-color: transparent;
+  color: white;
+  appearance: none;
+  text-align: center;
+  border: 1px solid red;
+  width: 80%;
+  margin-left: 10%;
 }
 
 textarea {
