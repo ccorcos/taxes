@@ -13,6 +13,7 @@ icon, splash
 backups.
 deploy.
 
+transition!
 
 meteor add cordova:org.apache.cordova.camera
 
