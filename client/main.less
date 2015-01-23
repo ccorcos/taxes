@@ -51,6 +51,7 @@ body {
 @import "views/account/account.import.less";
 @import "views/home/home.import.less";
 @import "views/newRecord/newRecord.import.less";
+@import "views/editRecord/editRecord.import.less";
 @import "views/record/record.import.less";
 @import "views/settings/settings.import.less";
 @import "styles/input.import.less";
@@ -99,7 +100,6 @@ body {
 }
 
 
-
 .nav {
   z-index: 100;
   position: absolute;
@@ -117,6 +117,9 @@ body {
     font-size: 2rem;
   }
   .right {
+    .octicon.octicon-pencil {
+      font-size: 27px;
+    }
     .octicon {
       font-size: @octiconNavSize;
     }

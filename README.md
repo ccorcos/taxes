@@ -1,7 +1,7 @@
 # [Taxes](tax-writeoffs.meteor.com)
 
-edit record
 cordova take a picture.
+check publish, subscribe, security
 export images with zip.
 icon, splash.
 backups.

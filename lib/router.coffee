@@ -54,6 +54,14 @@ Router.route 'record',
   data: ->
     Records.findOne(@params._id)
 
+Router.route 'editRecord',
+  path: 'edit/:_id'
+  waitOn: ->
+    if Meteor.userId()
+      return subs.subscribe 'record', @params._id
+  data: ->
+    Records.findOne(@params._id)
+
 Router.route 'login'
 Router.route 'signup'
 Router.route 'forgot'

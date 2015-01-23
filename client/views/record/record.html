@@ -3,6 +3,7 @@
     <div class="nav">
       <div class="title">Record</div>
       <div class="left back"><span class="octicon octicon-chevron-left"></span></div>
+      <div class="right edit"><span class="octicon octicon-pencil"></span></div>
     </div>
     <div class="content under-nav">
       <div class="date">{{formatDate date}}</div>
@@ -12,7 +13,6 @@
       <div class="receipt">
         <a href="{{receipt.url download=true}}"><img src="{{receipt.url}}"></a>
       </div>
-      <button class="delete">Delete</button>
     </div>
   </div>
 </template>

@@ -1,0 +1,29 @@
+<template name="editRecord">
+  <div class="page editRecord">
+    <div class="nav">
+      <div class="title">Edit Record</div>
+      <div class="left cancel"><span class="octicon octicon-x"></span></div>
+      <div class="right save"><span class="octicon octicon-check"></span></div>
+    </div>
+    <div class="content under-nav">
+<!--       <div class="date">{{formatDate date}}</div>-->
+
+      <input type="text" name="note" placeholder="note" autocorrect="off" autocapitalize="off" value="{{note}}">
+
+      <select name="category">
+        <option selected="" disabled="" value="">-- category --</option>
+        {{#each categories}}
+          <option value="{{this}}" selected="{{selected this ../category}}">{{this}}</option>
+        {{/each}}
+      </select>
+
+      <div class="money">$<input type="decimal" name="amount" placeholder="0.00" autocorrect="off" autocapitalize="off" value="{{amount}}"></div>
+
+
+      <div class="receipt">
+        <a href="{{receipt.url}}"><img src="{{receipt.url}}"></a>
+      </div>
+      <button class="delete">Delete</button>
+    </div>
+  </div>
+</template>
