@@ -1,7 +1,6 @@
 # [Taxes](tax-writeoffs.meteor.com)
 
-cordova take a picture.
-loading thing screen on login, signup, submit picture, disable button
+loading on login, signup, submit picture, disable button
 button active states
 larger nav button areas
 
@@ -27,3 +26,4 @@ boilerplate
 - helpers
 - less files
 - better publish composite with if inside the find
+- meteor add reactive-var

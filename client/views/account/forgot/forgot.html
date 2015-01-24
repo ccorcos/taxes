@@ -8,7 +8,9 @@
         <input type="text" name="email" placeholder="email" autocorrect="off" autocapitalize="off">
         <div class="error">{{error}}</div>
         <div class="message">{{message}}</div>
-        <input type="submit" value="send recovery email">
+        {{#waiting isLoading=loading}}
+          <input type="submit" value="send recovery email">
+        {{/waiting}}
       </form>
     </div>
 

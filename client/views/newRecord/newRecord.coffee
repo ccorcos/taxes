@@ -72,6 +72,5 @@ Template.newRecord.events
   'click .cancel': (e,t) ->
     Router.go 'home'
 
-takePicture
 
 

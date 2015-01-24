@@ -12,3 +12,11 @@
     <div class="shaft10"></div>
   </div>
 </template>
+
+<template name="waiting">
+  {{#if isLoading}}
+      {{> loader}}
+  {{else}}
+    {{> UI.contentBlock}}
+  {{/if}}
+</template>

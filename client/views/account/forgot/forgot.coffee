@@ -1,6 +1,11 @@
-Template.forgot.rendered = ->
-  noMessage()
+Template.forgot.created = ->
   noError()
+  noMessage()
+  @loading = new ReactiveVar(false)
+
+Template.forgot.helpers
+  loading: () -> Template.instance().loading.get()
+
 
 Template.forgot.events
   'submit form#recover': formSubmit (e, t, values) ->
@@ -13,10 +18,12 @@ Template.forgot.events
 
     message "Sending you an email..."
 
+    t.loading.set(true)
     Accounts.forgotPassword
       email: email
     ,
       (err) ->
+        t.loading.set(false)
         if err
           noMessage()
           error(err.reason)
