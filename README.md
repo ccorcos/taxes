@@ -1,10 +1,12 @@
 # [Taxes](tax-writeoffs.meteor.com)
 
-loading on login, signup, submit picture, disable button
+image render locally on new record
+submit loading with progress
+
 button active states
 larger nav button areas
 
-disconnected warning
+disconnected errors on methods!
 
 check publish, subscribe, security
 export images with zip.
