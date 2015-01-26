@@ -3,31 +3,25 @@
 ## TODO
 
 - disconnected style
-- button active states
-- larger nav button areas
+- no highlight, all except inputs!
 - cordova processImage with the same function
 - submit upload progress?
-- no highlight, all except inputs!
+- icon, splash
 
 ## Later
 
 - editRecord reactive variable Template.instance() problem with confirmDelete
 
-
-
-
-
-disconnected errors on methods?
+- disconnected errors on methods?
 
 
 
 check publish, subscribe, security
 export images with zip.
-icon, splash
 backups.
 deploy.
 
-transition!
+
 
 meteor add cordova:org.apache.cordova.camera
 

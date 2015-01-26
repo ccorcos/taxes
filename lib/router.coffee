@@ -65,6 +65,8 @@ Router.route 'forgot'
 
 Router.route 'loading'
 Router.route 'notFound'
+Router.route 'splash'
+Router.route 'icon'
 
 Router.route 'reset',
   path: 'reset/:id'
