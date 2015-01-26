@@ -1,8 +1,13 @@
 <template name="newRecord">
   <div class="page newRecord">
     <div class="nav">
-      <div class="left"><span class="octicon octicon-x cancel"></span></div>
+      <div class="left octicon octicon-x cancel"></div>
       <div class="title">New Record</div>
+      <div class="right save">
+        {{#waiting isLoading=loading}}
+          <span class="octicon octicon-check"></span>
+        {{/waiting}}
+      </div>
     </div>
     <div class="content under-nav">
       <form id="record">
@@ -15,24 +20,35 @@
           {{/each}}
         </select>
 
-        <div class="money">$<input type="number" inputmode="numeric" step="0.01" name="amount" placeholder="0.00" autocorrect="off" autocapitalize="off"></div>
+        <div class="money">
+          <div class="dollar-sign">$</div>
+          <input class="dollar" type="number" inputmode="numeric" step="0.01" name="amount" placeholder="0.00" autocorrect="off" autocapitalize="off">
+        </div>
 
-        {{#if isCordova}}
-          <div class="upload">
-            <div class="camera takePicture">
-              <span class="mega-octicon octicon-device-camera"></span>
-            </div>
+        {{#if imageData}}
+          <div class="receipt">
+            <img src="{{imageData}}">
           </div>
         {{else}}
-          <div class="upload">
-            <div class="camera">
-              <span class="mega-octicon octicon-device-camera"></span>
+          {{#if isCordova}}
+            <div class="upload">
+              <div class="camera takePicture">
+                <span class="mega-octicon octicon-device-camera"></span>
+              </div>
             </div>
-            <input type="file" name="receipt" accept="image/*">
-          </div>
+          {{else}}
+            <div class="upload">
+              <div class="camera">
+                <span class="mega-octicon octicon-device-camera"></span>
+                <input type="file" name="receipt" accept="image/*">
+              </div>
+            </div>
+          {{/if}}
         {{/if}}
         <div class="error">{{error}}</div>
-        <button type="submit">Submit</button>
+<!--         {{#waiting isLoading=loading}}
+          <button type="submit">submit</button>
+        {{/waiting}} -->
       </form>
     </div>
   </div>

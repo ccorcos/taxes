@@ -2,8 +2,12 @@
   <div class="page editRecord">
     <div class="nav">
       <div class="title">Edit Record</div>
-      <div class="left cancel"><span class="octicon octicon-x"></span></div>
-      <div class="right save"><span class="octicon octicon-check"></span></div>
+      <div class="left cancel octicon octicon-x"></div>
+      <div class="right save">
+        {{#waiting isLoading=loadingSave}}
+          <span class="octicon octicon-check"></span>
+        {{/waiting}}
+      </div>
     </div>
     <div class="content under-nav">
 <!--       <div class="date">{{formatDate date}}</div>-->
@@ -17,14 +21,24 @@
         {{/each}}
       </select>
 
-      <div class="money">$<input type="number" inputmode="numeric" step="0.01" name="amount" placeholder="0.00" autocorrect="off" autocapitalize="off" value="{{amount}}"></div>
-
+      <div class="money">
+        <div class="dollar-sign">$</div>
+        <input class="dollar" type="number" inputmode="numeric" step="0.01" name="amount" placeholder="0.00" autocorrect="off" autocapitalize="off" value="{{amount}}">
+      </div>
+      
       <div class="error">{{error}}</div>
 
       <div class="receipt">
         <img src="{{receipt.url}}">
       </div>
-      <button class="delete">Delete</button>
+
+      {{#waiting isLoading=loadingDelete}}
+        {{#if confirmDelete}}
+          <button class="confirm">Are you sure?</button>
+        {{else}}
+          <button class="delete">Delete</button>
+        {{/if}}
+      {{/waiting}}
     </div>
   </div>
 </template>

@@ -2,6 +2,8 @@
 @bodyColor: #151515;
 @bodyTextColor: #dddddd;
 
+@activeColor: #dddddd;
+
 @color1: #0c0c0c;
 @textColor1: #4d91ea;
 
@@ -29,7 +31,7 @@
 }
 
   // user-select: none;
-  
+
 
 @font-face {
   font-family: 'roboto';
@@ -78,6 +80,7 @@ body {
     right: 0;
 
     .content {
+      overflow-x: hidden;
       overflow-y: scroll;
       -webkit-overflow-scrolling: touch;
       position: absolute;
@@ -119,7 +122,19 @@ body {
     line-height: normal;
     font-size: 2rem;
   }
-  .right {
+  .right, .left {
+    &:active {
+      color: @activeColor;
+    }
+    .loader {
+      margin-top: 30px;
+    }
+    &.octicon.octicon-pencil {
+      font-size: 27px;
+    }
+    &.octicon {
+      font-size: @octiconNavSize;
+    }
     .octicon.octicon-pencil {
       font-size: 27px;
     }
@@ -128,29 +143,24 @@ body {
     }
     color: @textColor1;
     line-height: @navHeight;
+    * {
+      vertical-align: middle;
+    }
+  }
+  .right {
     position: absolute;
     top: 0;
     right: 0;
-    margin-right: 15px;
-    * {
-      vertical-align: middle;
-      font-size: 3rem;
-    }
+    padding-left: 25px;
+    padding-right: 15px;
+
   }
   .left {
-    .octicon {
-      font-size: @octiconNavSize;
-    }
-    color: @textColor1;
-    line-height: @navHeight;
     position: absolute;
     top: 0;
     left: 0;
-    margin-left: 15px;
-    * {
-      vertical-align: middle;
-      font-size: 3rem;
-    }
+    padding-left: 15px;
+    padding-right: 25px;
   }
 }
 
@@ -222,4 +232,3 @@ body {
   color: @bodyTextColor;
   text-align: center;
 }
-

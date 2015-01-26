@@ -1,12 +1,25 @@
 # [Taxes](tax-writeoffs.meteor.com)
 
-image render locally on new record
-submit loading with progress
+## TODO
 
-button active states
-larger nav button areas
+- disconnected style
+- button active states
+- larger nav button areas
+- cordova processImage with the same function
+- submit upload progress?
+- no highlight, all except inputs!
 
-disconnected errors on methods!
+## Later
+
+- editRecord reactive variable Template.instance() problem with confirmDelete
+
+
+
+
+
+disconnected errors on methods?
+
+
 
 check publish, subscribe, security
 export images with zip.

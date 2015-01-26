@@ -1,23 +1,33 @@
-Session.setDefault 'imageData', null
 
-Template.newRecord.rendered = ->
+Template.newRecord.created = ->
   noError()
-  Session.set 'imageData', null
+  @loading = new ReactiveVar(false)
+  @imageData = new ReactiveVar(null)
 
 Template.newRecord.helpers
+  loading: () -> Template.instance().loading.get()
+  imageData: () -> Template.instance().imageData.get()
   categories: () -> categories
 
 Template.newRecord.events
+  'click .save': (e,t) ->
+    $(t.find('form#record'))?.submit()
+
   'click .takePicture': (e,t) ->
     cameraSuccess = (imageData) ->
-      Session.set('imageData', "data:image/jpeg;base64," + imageData)
+      t.imageData.set("data:image/jpeg;base64," + imageData)
     cameraError = (message) ->
-      Meteor.defer ->
-        alert message
+      error message
 
     navigator.camera.getPicture cameraSuccess, cameraError, 
       quality: 50
       destinationType: Camera.DestinationType.DATA_URL
+
+  'change input[type=file]': (e,t) ->
+    file = e.target.files[0]
+
+    processImage file, 500, 500, (data) ->
+        t.imageData.set(data)
 
   'submit form#record': formSubmit (e, t, values) ->
 
@@ -37,40 +47,33 @@ Template.newRecord.events
       error "Select a category."
       return
 
-
-    insert = (data) ->
-      Receipts.insert data, (err, fileObj) ->
-        if err
-          console.log err
-          error err.reason
-        else
-          Meteor.call 'newRecord', note, amount, category, fileObj._id, (err) ->
-            if err
-              console.log err
-              error err.reason
-            else
-              Router.go 'home'
-
-    if Meteor.isCordova
-      data = Session.get 'imageData'
-      unless data
+    imageData = t.imageData.get()
+    unless imageData
+      if Meteor.isCordova
         error "Snap a picture of a receipt!"
-        return
-        
-      insert(data)
-
-    else
-      file = values.receipt[0]
-
-      unless file
+      else
         error "Attach a receipt!"
-        return
+      return
+    
+    t.loading.set(true)
+    Receipts.insert imageData, (err, fileObj) ->
+      if err
+        t.loading.set(false)
+        console.log err
+        error err.reason
+      else
+        Meteor.call 'newRecord', note, amount, category, fileObj._id, (err) ->
+          t.loading.set(false)
+          if err
+            console.log err
+            error err.reason
+          else
+            Router.go 'home'
 
-      processImage file, 500, 500, (data) ->
-        insert(data)
         
   'click .cancel': (e,t) ->
     Router.go 'home'
 
 
 
+  
