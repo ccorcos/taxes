@@ -36,3 +36,4 @@ boilerplate
 - less files
 - better publish composite with if inside the find
 - meteor add reactive-var
+- icon and splash

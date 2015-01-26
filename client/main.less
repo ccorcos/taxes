@@ -30,8 +30,16 @@
   box-sizing: border-box;
 }
 
-  // user-select: none;
+*:not(input):not(textarea) {
+  -webkit-touch-callout: none;
+  // -khtml-user-select: none; // locks fields on Safari
+  user-select: none;      
+}
 
+
+a {
+  text-decoration: none;
+}
 
 @font-face {
   font-family: 'roboto';
