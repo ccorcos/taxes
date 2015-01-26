@@ -18,7 +18,7 @@ Router.onBeforeAction ->
     else
       @next()
   ,
-    except: ['landing', 'login', 'signup', 'forgot', 'reset', 'zip']
+    except: ['landing', 'login', 'signup', 'forgot', 'reset', 'zip', 'loading', 'notFound', 'icon', 'splash']
 
 Router.onBeforeAction ->
     if Meteor.userId()

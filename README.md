@@ -2,30 +2,31 @@
 
 ## TODO
 
-- disconnected style
-- no highlight, all except inputs!
 - cordova processImage with the same function
 - submit upload progress?
 - icon, splash
 
+- check publish, subscribe, security
+- export images with zip, find Dataman! `for(var m in Receipts.findOne()) {a.push(m);}
+- backups
+- deploy
+- disconnected style
+
 ## Later
 
 - editRecord reactive variable Template.instance() problem with confirmDelete
-
 - disconnected errors on methods?
+- how to entirely reset cordova iOS
 
 
-
-check publish, subscribe, security
-export images with zip.
-backups.
-deploy.
 
 
 
 meteor add cordova:org.apache.cordova.camera
 
 meteor run ios-device --mobile-server chet.local:3000
+
+
 
 boilerplate
 
@@ -37,3 +38,4 @@ boilerplate
 - better publish composite with if inside the find
 - meteor add reactive-var
 - icon and splash
+- meteor add launch screen?
