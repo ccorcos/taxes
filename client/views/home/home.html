@@ -1,11 +1,9 @@
 <template name="home">
   <div class="page home">
-    <div class="nav {{disconnected}}">
-      <div class="title">Records</div>
-      <div class="right newRecord octicon octicon-plus"></div>
-      <div class="left settings octicon octicon-gear"></div>
-      {{> disconnected}}
-    </div>
+    {{>nav title="Records" 
+           leftClass="settings octicon octicon-gear" 
+           rightClass="newRecord octicon octicon-plus"}}
+    
     <div class="content under-nav {{disconnected}}">
       {{#if noRecords}}
         <button class="new newRecord">New Record <span class="entypo plus newRecord"></span></button>
@@ -20,5 +18,6 @@
         {{/each}}
       {{/if}}
     </div>
+    
   </div>
 </template>
