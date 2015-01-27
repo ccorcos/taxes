@@ -1,10 +1,9 @@
 <template name="home">
   <div class="page home">
-    {{>nav title="Records" 
-           leftClass="settings octicon octicon-gear" 
-           rightClass="newRecord octicon octicon-plus"}}
+    {{#app navTitle="Records" 
+           navLeftClass="settings octicon octicon-gear" 
+           navRightClass="newRecord octicon octicon-plus"}}
     
-    <div class="content under-nav {{disconnected}}">
       {{#if noRecords}}
         <button class="new newRecord">New Record <span class="entypo plus newRecord"></span></button>
       {{else}}
@@ -17,7 +16,7 @@
           </div>
         {{/each}}
       {{/if}}
-    </div>
-    
+    {{/app}}
+
   </div>
 </template>

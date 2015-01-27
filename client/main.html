@@ -1,0 +1,24 @@
+<template name="app">
+  {{#if navTitle}}
+    <div class="nav {{disconnected}}">
+      <div class="title">{{navTitle}}</div>
+      <div class="left {{navLeftClass}}"></div>
+      <div class="right {{navRightClass}}"></div>
+      {{> disconnected}}
+    </div>
+  {{/if}}
+  
+  <div class="content
+  {{#if navTitle}}{{disconnected}}{{/if}}
+  {{#if navTitle}}under-nav{{/if}}
+  {{#if toolbarHeight}}above-toolbar{{toolbarHeight}}{{/if}}">
+    {{>UI.contentBlock}}  
+  </div>
+
+  {{#if toolbarHeight}}
+    <div class="toolbar{{toolbarHeight}}">
+      {{>UI.elseBlock}}
+    </div>
+  {{/if}}
+</template>
+

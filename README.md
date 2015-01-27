@@ -2,6 +2,7 @@
 
 ## TODO
 
+- record, newRecord, editRecord fix when Blaze is fixed.
 - newRecord failDisconnected. 
 - add disconnected messages to error template.
 - cordova processImage with the same function
@@ -17,9 +18,9 @@
 ## Later
 
 - editRecord reactive variable Template.instance() problem with confirmDelete
+- Template.parentData() in record to go to editRecord
 - disconnected errors on methods?
 - how to entirely reset cordova iOS
-
 
 
 

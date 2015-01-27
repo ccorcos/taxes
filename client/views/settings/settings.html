@@ -1,13 +1,10 @@
 <template name="settings">
   <div class="page settings">
-    <div class="nav">
-      <div class="title">Settings</div>
-      <div class="left back octicon octicon-chevron-left"></div>
-    </div>
-    <div class="content under-nav">
+    {{#app navTitle="Settings"
+           navLeftClass="back octicon octicon-chevron-left"}}
       <button class="export">export to zip</button>
       <button class="logout">logout</button>
       <button class="delete-data">delete data</button>
-    </div>
+    {{/app}}
   </div>
 </template>

@@ -6,22 +6,16 @@
 
 <template name="loading">
   <div class="loading page">
-    <div class="nav">
-      <span class="title">Loading</span>
-    </div>
-    <div class="content under-nav">
+    {{#app navTitle="Loading"}}
       {{>loader}}
-    </div>
+    {{/app}}
   </div>
 </template>
 
 <template name="notFound">
   <div class="notFound page">
-    <div class="nav">
-      <span class="title">Error</span>
-    </div>
-    <div class="content under-nav">
+    {{#app navTitle="Error"}}
       <div class="code">404</div>
-    </div>
+    {{/app}}
   </div>
 </template>

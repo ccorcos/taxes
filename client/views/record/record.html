@@ -1,11 +1,12 @@
 <template name="record">
   <div class="page record">
-    <div class="nav">
+    <div class="nav {{disconnected}}">
       <div class="title">Record</div>
       <div class="left back octicon octicon-chevron-left"></div>
       <div class="right edit octicon octicon-pencil"></div>
+      {{>disconnected}}
     </div>
-    <div class="content under-nav">
+    <div class="content under-nav {{disconnected}}">
       <div class="date">{{formatDate date}}</div>
       <div class="amount">${{formatAmount amount}}</div>
       <div class="category">{{category}}</div>

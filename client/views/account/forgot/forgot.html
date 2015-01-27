@@ -1,9 +1,9 @@
 <template name="forgot">
   <div class="forgot account page">
 
-    <div class="nav"><span class="title">Recover Password</span></div>
-
-    <div class="content under-nav above-toolbar">
+    {{#app navTitle="Recover Password" 
+       toolbarHeight=1}}
+      
       <form id="recover">
         <input type="text" name="email" placeholder="email" autocorrect="off" autocapitalize="off">
         {{>error}}
@@ -12,11 +12,10 @@
           <input type="submit" value="send recovery email">
         {{/waiting}}
       </form>
-    </div>
 
-    <div class="toolbar">
+    {{else}}
       <div class="toLogin">login</div>
-    </div>
+    {{/app}}
 
   </div>
 </template>

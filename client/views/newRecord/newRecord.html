@@ -1,6 +1,6 @@
 <template name="newRecord">
   <div class="page newRecord">
-    <div class="nav">
+    <div class="nav {{disconnected}}">
       <div class="left octicon octicon-x cancel"></div>
       <div class="title">New</div>
       <div class="right save">
@@ -8,8 +8,9 @@
           <span class="octicon octicon-check"></span>
         {{/waiting}}
       </div>
+      {{>disconnected}}
     </div>
-    <div class="content under-nav">
+    <div class="content under-nav {{disconnected}}">
       <form id="record">
         <input type="text" name="note" placeholder="note" autocorrect="off" autocapitalize="off">
 

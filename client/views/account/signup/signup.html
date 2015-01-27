@@ -1,12 +1,9 @@
 <template name="signup">
   <div class="signup account page">
     
-    <div class="nav">
-      <div class="left exitSignup"><span class="octicon octicon-x"></span></div>
-      <div class="title">Signup</div>
-    </div>
-
-    <div class="content under-nav">
+    {{#app navTitle="Login" 
+       navLeftClass="exitSignup octicon octicon-x"}}
+      
       <form id="signup">
         <input type="email" name="email" placeholder="email" autocorrect="off" autocapitalize="off">
         <input type="password" name="password" placeholder="password" autocorrect="off" autocapitalize="off">
@@ -16,7 +13,7 @@
           <button type="submit">signup</button>
         {{/waiting}}
       </form>
-    </div>
-
+    {{/app}}
+    
   </div>
 </template>
