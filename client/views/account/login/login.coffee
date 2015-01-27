@@ -9,19 +9,20 @@ Template.login.helpers
 Template.login.events
   'submit form#login' : formSubmit (e, t, values) ->
 
-    # Trim and validate
-    email = _.str.trim values.email
-    password = values.password
+    unless disconnected()
+      # Trim and validate
+      email = _.str.trim values.email
+      password = values.password
 
-    t.loading.set(true)
-    Meteor.loginWithPassword email, password,
-      (err) ->
-        t.loading.set(false)
-        if err
-          error(err.reason)
-        else
-          noError()
-          afterLogin()
+      t.loading.set(true)
+      Meteor.loginWithPassword email, password,
+        (err) ->
+          t.loading.set(false)
+          if err
+            error(err.reason)
+          else
+            noError()
+            afterLogin()
 
   'click .toForgot': (e,t) ->
     Router.go 'forgot'

@@ -25,6 +25,8 @@
           <input class="dollar" type="number" inputmode="numeric" step="0.01" name="amount" placeholder="0.00" autocorrect="off" autocapitalize="off">
         </div>
 
+        {{> error}}
+
         {{#if imageData}}
           <div class="receipt">
             <img src="{{imageData}}">
@@ -45,7 +47,6 @@
             </div>
           {{/if}}
         {{/if}}
-        <div class="error">{{error}}</div>
 <!--         {{#waiting isLoading=loading}}
           <button type="submit">submit</button>
         {{/waiting}} -->

@@ -10,7 +10,7 @@
       <form id="login">
         <input type="email" name="email" placeholder="email" autocorrect="off" autocapitalize="off">
         <input type="password" name="password" placeholder="password" autocorrect="off" autocapitalize="off">
-        <div class="error">{{error}}</div>
+        {{>error}}
         {{#waiting isLoading=loading}}
           <button type="submit">login</button>
         {{/waiting}}

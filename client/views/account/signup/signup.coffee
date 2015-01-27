@@ -9,22 +9,23 @@ Template.signup.helpers
 Template.signup.events
   'submit form#signup': formSubmit (e, t, values) ->
    
-    # Trim and validate
-    email = _.str.trim values.email
-    password = values.password
+    unless disconnected()
+      # Trim and validate
+      email = _.str.trim values.email
+      password = values.password
 
-    t.loading.set(true)
-    Accounts.createUser
-      email: email
-      password: password
-    ,
-      (err) ->
-        t.loading.set(false)
-        if err
-          error(err.reason)
-        else
-          noError()
-          afterSignup()
+      t.loading.set(true)
+      Accounts.createUser
+        email: email
+        password: password
+      ,
+        (err) ->
+          t.loading.set(false)
+          if err
+            error(err.reason)
+          else
+            noError()
+            afterSignup()
 
   'click .exitSignup': (e,t) ->
     Router.go 'landing'

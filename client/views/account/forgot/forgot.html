@@ -6,8 +6,8 @@
     <div class="content under-nav above-toolbar">
       <form id="recover">
         <input type="text" name="email" placeholder="email" autocorrect="off" autocapitalize="off">
-        <div class="error">{{error}}</div>
-        <div class="message">{{message}}</div>
+        {{>error}}
+        {{>message}}
         {{#waiting isLoading=loading}}
           <input type="submit" value="send recovery email">
         {{/waiting}}

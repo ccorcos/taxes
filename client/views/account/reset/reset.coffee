@@ -13,30 +13,31 @@ Template.reset.events
 
   'submit form#reset': formSubmit (e, t, values) ->
     
-    password = values.password
-    verify = values.verify
+    unless disconnected()
+      password = values.password
+      verify = values.verify
 
-    if password != verify
-      error "Passwords do not match."
-      return
+      if password != verify
+        error "Passwords do not match."
+        return
 
-    if password.length <= 3
-      error "Password must have more than 4 characters."
-      return
+      if password.length <= 3
+        error "Password must have more than 4 characters."
+        return
 
-    message "Resetting your password..."
+      message "Resetting your password..."
 
-    t.loading.set(true)
-    Accounts.resetPassword Session.get('resetPasswordToken'), password,
-      (err) ->
-        t.loading.set(false)
-        if err
-          noMessage()
-          error(err.reason)
-        else
-          Session.set('resetPasswordToken', null)
-          noMessage()
-          noError()
-          afterLogin()
+      t.loading.set(true)
+      Accounts.resetPassword Session.get('resetPasswordToken'), password,
+        (err) ->
+          t.loading.set(false)
+          if err
+            noMessage()
+            error(err.reason)
+          else
+            Session.set('resetPasswordToken', null)
+            noMessage()
+            noError()
+            afterLogin()
 
 

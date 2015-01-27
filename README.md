@@ -2,6 +2,8 @@
 
 ## TODO
 
+- newRecord failDisconnected. 
+- add disconnected messages to error template.
 - cordova processImage with the same function
 - submit upload progress?
 - icon, splash

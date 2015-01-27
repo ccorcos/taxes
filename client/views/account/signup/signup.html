@@ -11,7 +11,7 @@
         <input type="email" name="email" placeholder="email" autocorrect="off" autocapitalize="off">
         <input type="password" name="password" placeholder="password" autocorrect="off" autocapitalize="off">
         <input type="password" name="verify" placeholder="verify password" autocorrect="off" autocapitalize="off">
-        <div class="error">{{error}}</div>
+        {{>error}}
         {{#waiting isLoading=loading}}
           <button type="submit">signup</button>
         {{/waiting}}
