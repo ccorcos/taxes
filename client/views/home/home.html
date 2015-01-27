@@ -1,11 +1,12 @@
 <template name="home">
   <div class="page home">
-    <div class="nav">
+    <div class="nav {{disconnected}}">
       <div class="title">Records</div>
       <div class="right newRecord octicon octicon-plus"></div>
       <div class="left settings octicon octicon-gear"></div>
+      {{> disconnected}}
     </div>
-    <div class="content under-nav">
+    <div class="content under-nav {{disconnected}}">
       {{#if noRecords}}
         <button class="new newRecord">New Record <span class="entypo plus newRecord"></span></button>
       {{else}}

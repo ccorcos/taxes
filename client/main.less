@@ -18,6 +18,7 @@
 
 
 @navHeight: 90px;
+@navNotificationHeight: 25px;
 @rowHeight: 55px;
 @toolbarHeight: 65px;
 @inputHeight: 40px;
@@ -100,6 +101,9 @@ body {
 
       &.under-nav {
         top: @navHeight;
+        &.disconnected {
+          top: @navHeight + @navNotificationHeight;
+        }
       }
       &.above-toolbar {
         bottom: @toolbarHeight;
@@ -124,6 +128,19 @@ body {
   width: 100%;
   text-align: center;
   line-height: @navHeight;
+  &.disconnected {
+    height: @navHeight + @navNotificationHeight;
+  }
+  .disconnected {
+    height: @navNotificationHeight;
+    top: @navHeight;
+    left: 0;
+    right: 0;
+    background-color: @textColor3;
+    color: @bodyColor;
+    line-height: @navNotificationHeight;
+    font-weight: bold;
+  }
   .title {
     color: @textColor1;
     display: inline-block;
