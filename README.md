@@ -2,26 +2,18 @@
 
 ## TODO
 
-- record, newRecord, editRecord fix when Blaze is fixed.
-- newRecord failDisconnected. 
-- add disconnected messages to error template.
+- export images with zip, find Dataman! for(var m in Receipts.findOne()) {a.push(m);}
 - cordova processImage with the same function
-- submit upload progress?
 - icon, splash
-
-- check publish, subscribe, security
-- export images with zip, find Dataman! `for(var m in Receipts.findOne()) {a.push(m);}
+- zip on mobile?
 - backups
 - deploy
-- disconnected style
 
 ## Later
 
+- {{#app}} record, newRecord, editRecord fix when Blaze is fixed.
 - editRecord reactive variable Template.instance() problem with confirmDelete
-- Template.parentData() in record to go to editRecord
-- disconnected errors on methods?
 - how to entirely reset cordova iOS
-
 
 
 

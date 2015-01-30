@@ -2,9 +2,16 @@
   <div class="page settings">
     {{#app navTitle="Settings"
            navLeftClass="back octicon octicon-chevron-left"}}
+      {{>error}}
       <button class="export">export to zip</button>
       <button class="logout">logout</button>
-      <button class="delete-data">delete data</button>
+      {{#waiting isLoading=loadingDelete}}
+        {{#if confirmDelete}}
+          <button class="confirm">Are you sure?</button>
+        {{else}}
+          <button class="delete-data">Delete Data</button>
+        {{/if}}
+      {{/waiting}}
     {{/app}}
   </div>
 </template>

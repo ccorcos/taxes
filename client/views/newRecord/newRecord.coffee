@@ -66,6 +66,7 @@ Template.newRecord.events
           error "Attach a receipt!"
         return
 
+      t.loading.set(true)
       Receipts.insert imageData, (err, fileObj) ->
         if err
           t.loading.set(false)

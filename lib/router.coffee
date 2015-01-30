@@ -26,7 +26,7 @@ Router.onBeforeAction ->
     else
       @next()
   ,
-    only: ['landing', 'login', 'signup', 'forgot', 'reset', 'zip']
+    only: ['landing', 'login', 'signup', 'forgot', 'reset']
 
 
 Router.route 'landing'
@@ -85,10 +85,16 @@ Router.route 'zip',
 
       zip = new JSZip()
       csv = "Date, Note, Amount, ReceiptId\n"
+      receiptIds = []
       for record in Records.find({ownerId:u._id}).fetch()
+        receiptIds.push(record.receiptId)
         csv += "#{Date.create(record.date).format('{yy}/{MM}/{dd} {HH}:{mm}')}, #{record.note}, $#{record.amount.format(2)}, #{record.receiptId}\n"
 
       zip.file('data.csv', csv)
+
+      
+
+
 
       output = zip.generate
         type:        "nodebuffer"
