@@ -2,7 +2,6 @@
 
 ## TODO
 
-- export images with zip, find Dataman! for(var m in Receipts.findOne()) {a.push(m);}
 - cordova processImage with the same function
 - icon, splash
 - zip on mobile?
