@@ -35,7 +35,7 @@ splashSizes = [
   {width:1024, height:748,  name:'../../public/splash/apple-touch-startup-image-1024x748.png'}
   {width:1024, height:768,  name:'../../public/splash/apple-touch-startup-image-1024x768.png'}
   {width:1536, height:2008, name:'../../public/splash/apple-touch-startup-image-1536x2008.png'}
-  {width:1536, height:2024, name:'../../public/splash/apple-touch-startup-image-1536x2024.png'}
+  {width:1536, height:2048, name:'../../public/splash/apple-touch-startup-image-1536x2048.png'}
   {width:2048, height:1496, name:'../../public/splash/apple-touch-startup-image-2048x1496.png'}
   {width:2048, height:1536, name:'../../public/splash/apple-touch-startup-image-2048x1536.png'}
   {width:200, height:320, name:'../../public/splash/android-ldpi-startup-image-200x320.png'}
