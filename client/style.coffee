@@ -1,5 +1,3 @@
-@cssc = new CSSC()
-
 themes = new ReactiveDict()
 themes.setDefault 'dark.background',   '#151515'
 themes.setDefault 'dark.foreground',   '#0c0c0c'
@@ -69,7 +67,6 @@ fullPage = ->
   right: 0
 
 
-
 css
   '*': boxSizing('border-box')
   '*:not(input):not(textarea)': _.extend userSelect('none'),
@@ -132,6 +129,9 @@ css
       color: -> color('primary')
       display: 'inlineBlock'
       verticalAlign: 'middle'
+      lineHeight: 'normal'
+      fontSizeem: 2
+      
 
 
 
