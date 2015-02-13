@@ -25,8 +25,8 @@ Template.newRecord.events
       #   t.imageData.set(data)
 
       t.imageData.set("data:image/jpeg;base64," + imageData)
-    cameraError = (message) ->
-      error message
+    
+    cameraError = (message) -> error(message)
 
     navigator.camera.getPicture cameraSuccess, cameraError, 
       quality: 50
@@ -36,7 +36,7 @@ Template.newRecord.events
     file = e.target.files[0]
 
     processImage file, 500, 500, (data) ->
-        t.imageData.set(data)
+      t.imageData.set(data)
 
   'submit form#record': formSubmit (e, t, values) ->
 
