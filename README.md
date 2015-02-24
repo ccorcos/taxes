@@ -2,16 +2,19 @@
 
 ## TODO
 
-- icon, splash
-- zip on mobile?
 - backups
 - deploy
+- responsive design!
 
 ## Notes
 
     meteor add cordova:org.apache.cordova.camera
 
-    meteor run ios-device --mobile-server https://tax-writeoffs.com
+    tax-writeoffs.com forwards to meteor so we can use ssl
+
+    meteor deploy tax-writeoffs.meteor.com
+    
+    meteor run ios-device --mobile-server https://tax-writeoffs.meteor.com
 
 
     cd private/IconSplashMaker  

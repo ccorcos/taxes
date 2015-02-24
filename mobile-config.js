@@ -1,12 +1,12 @@
 // This section sets up some basic app metadata,
 // the entire section is optional.
 App.info({
-  id: 'com.chetcorcos.tax-write-offs',
-  name: 'Tax Write-offs',
-  description: 'Save your tax write-off receipts.',
+  id: 'com.chetcorcos.tax-writeoffs',
+  name: 'Tax-Writeoffs',
+  description: 'Save your tax-writeoff receipts.',
   author: 'Chet Corcos',
   email: 'ccorcos@gmail.com',
-  website: 'http://www.chetcorcos.com',
+  website: 'http://tax-writeoffs.com',
   version: '1.0.0'
 });
 

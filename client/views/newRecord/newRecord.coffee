@@ -4,7 +4,7 @@ imageData = new ReactiveVar(null)
 Template.newRecord.created = ->
   noError()
   loading.set(false)
-  imageData.set(false)
+  imageData.set(null)
 
 Template.newRecord.helpers
   loading: () -> loading.get()
@@ -16,22 +16,25 @@ Template.newRecord.events
     $(t.find('form#record'))?.submit()
 
   'click .takePicture': (e,t) ->
-    cameraSuccess = (imageData) ->
+    cameraSuccess = (data) ->
       # http://stackoverflow.com/questions/16968945/convert-base64-png-data-to-javascript-file-objects
       # https://developer.mozilla.org/en-US/docs/Web/API/URL.createObjectURL
 
-      file = new Blob(["data:image/png;base64"],  {type: 'image/png', encoding: 'utf-8'})
-      fr = new FileReader()
-      fr.readAsText(file, "utf-8")
-      processImage file, 500, 500, (data) ->
-        imageData.set(data)
+      # file = new Blob(["data:image/png;base64"],  {type: 'image/png', encoding: 'utf-8'})
+      # fr = new FileReader()
+      # fr.readAsText(file, "utf-8")
+      
+      # processImage file, 500, 500, (data) ->
+      #   imageData.set(data)
 
-      # imageData.set("data:image/jpeg;base64," + imageData)
+      imageData.set("data:image/jpeg;base64," + data)
     
     cameraError = (message) -> error(message)
 
     navigator.camera.getPicture cameraSuccess, cameraError, 
       quality: 50
+      targetWidth: 500,
+      targetHeight: 500,
       destinationType: Camera.DestinationType.DATA_URL
 
   'change input[type=file]': (e,t) ->
@@ -60,8 +63,8 @@ Template.newRecord.events
         error "Select a category."
         return
 
-      imageData = imageData.get()
-      unless imageData
+      imgData = imageData.get()
+      unless imgData
         if Meteor.isCordova
           error "Snap a picture of a receipt!"
         else
@@ -69,7 +72,7 @@ Template.newRecord.events
         return
 
       loading.set(true)
-      Receipts.insert imageData, (err, fileObj) ->
+      Receipts.insert imgData, (err, fileObj) ->
         if err
           loading.set(false)
           console.log err
