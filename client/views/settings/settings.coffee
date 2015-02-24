@@ -11,7 +11,10 @@ Template.settings.helpers
 
 Template.settings.events
   'click .export': (e,t) ->
-    Router.go 'zip'
+    if Meteor.isCordova
+      alert('Please do this from a Desktop computer. Go to https://tax-writeoffs.meteor.com')
+    else
+      Router.go 'zip'
   'click .logout': (e,t) ->
     Meteor.logout()
   'click .delete-data': (e,t) ->

@@ -82,6 +82,8 @@ Router.route 'zip',
   action: ->
     if @request.cookies.meteor_login_token
       u = Meteor.users.findOne({"services.resume.loginTokens.hashedToken": Accounts._hashLoginToken(@request.cookies.meteor_login_token)})
+      unless u
+        @redirect 'login'
 
       zip = new JSZip()
       csv = "Date, Note, Amount, ReceiptId\n"
@@ -91,7 +93,6 @@ Router.route 'zip',
         zip.file "#{record.receiptId}.png", img, {base64: true}
       
       zip.file('data.csv', csv)
-
 
       output = zip.generate
         type:        "nodebuffer"
@@ -105,4 +106,4 @@ Router.route 'zip',
       # Send content
       @response.end(output)
     else
-      return false
+      @redirect 'login'

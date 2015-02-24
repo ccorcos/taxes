@@ -1,9 +1,11 @@
+loading = new ReactiveVar(false)
+
 Template.signup.created = ->
   noError()
-  @loading = new ReactiveVar(false)
+  loading.set(false)
 
 Template.signup.helpers
-  loading: () -> Template.instance().loading.get()
+  loading: () -> loading.get()
 
 
 Template.signup.events
@@ -14,13 +16,13 @@ Template.signup.events
       email = _.str.trim values.email
       password = values.password
 
-      t.loading.set(true)
+      loading.set(true)
       Accounts.createUser
         email: email
         password: password
       ,
         (err) ->
-          t.loading.set(false)
+          loading.set(false)
           if err
             error(err.reason)
           else

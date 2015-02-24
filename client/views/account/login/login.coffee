@@ -1,10 +1,11 @@
-
+loading = new ReactiveVar(false)
 Template.login.created = ->
   noError()
-  @loading = new ReactiveVar(false)
+  loading.set(false)
 
 Template.login.helpers
-  loading: () -> Template.instance().loading.get()
+  loading: () -> 
+    loading.get()
 
 Template.login.events
   'submit form#login' : formSubmit (e, t, values) ->
@@ -14,10 +15,10 @@ Template.login.events
       email = _.str.trim values.email
       password = values.password
 
-      t.loading.set(true)
+      loading.set(true)
       Meteor.loginWithPassword email, password,
         (err) ->
-          t.loading.set(false)
+          loading.set(false)
           if err
             error(err.reason)
           else

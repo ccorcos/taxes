@@ -1,10 +1,12 @@
+loading = new ReactiveVar(false)
+
 Template.reset.created = ->
   noError()
   noMessage()
-  @loading = new ReactiveVar(false)
+  loading.set(false)
 
 Template.reset.helpers
-  loading: () -> Template.instance().loading.get()
+  loading: () -> loading.get()
 
 
 Template.reset.events
@@ -27,10 +29,10 @@ Template.reset.events
 
       message "Resetting your password..."
 
-      t.loading.set(true)
+      loading.set(true)
       Accounts.resetPassword Session.get('resetPasswordToken'), password,
         (err) ->
-          t.loading.set(false)
+          loading.set(false)
           if err
             noMessage()
             error(err.reason)

@@ -1,12 +1,14 @@
+loading = new ReactiveVar(false)
+imageData = new ReactiveVar(null)
 
 Template.newRecord.created = ->
   noError()
-  @loading = new ReactiveVar(false)
-  @imageData = new ReactiveVar(null)
+  loading.set(false)
+  imageData.set(false)
 
 Template.newRecord.helpers
-  loading: () -> Template.instance().loading.get()
-  imageData: () -> Template.instance().imageData.get()
+  loading: () -> loading.get()
+  imageData: () -> imageData.get()
   categories: () -> categories
 
 Template.newRecord.events
@@ -18,13 +20,13 @@ Template.newRecord.events
       # http://stackoverflow.com/questions/16968945/convert-base64-png-data-to-javascript-file-objects
       # https://developer.mozilla.org/en-US/docs/Web/API/URL.createObjectURL
 
-      # file = new Blob(["data:image/png;base64"],  {type: 'image/png', encoding: 'utf-8'})
-      # fr = new FileReader()
-      # fr.readAsText(file, "utf-8")
-      # processImage file, 500, 500, (data) ->
-      #   t.imageData.set(data)
+      file = new Blob(["data:image/png;base64"],  {type: 'image/png', encoding: 'utf-8'})
+      fr = new FileReader()
+      fr.readAsText(file, "utf-8")
+      processImage file, 500, 500, (data) ->
+        imageData.set(data)
 
-      t.imageData.set("data:image/jpeg;base64," + imageData)
+      # imageData.set("data:image/jpeg;base64," + imageData)
     
     cameraError = (message) -> error(message)
 
@@ -36,7 +38,7 @@ Template.newRecord.events
     file = e.target.files[0]
 
     processImage file, 500, 500, (data) ->
-      t.imageData.set(data)
+      imageData.set(data)
 
   'submit form#record': formSubmit (e, t, values) ->
 
@@ -58,7 +60,7 @@ Template.newRecord.events
         error "Select a category."
         return
 
-      imageData = t.imageData.get()
+      imageData = imageData.get()
       unless imageData
         if Meteor.isCordova
           error "Snap a picture of a receipt!"
@@ -66,15 +68,15 @@ Template.newRecord.events
           error "Attach a receipt!"
         return
 
-      t.loading.set(true)
+      loading.set(true)
       Receipts.insert imageData, (err, fileObj) ->
         if err
-          t.loading.set(false)
+          loading.set(false)
           console.log err
           error err.reason
         else
           Meteor.call 'newRecord', note, amount, category, fileObj._id, (err) ->
-            t.loading.set(false)
+            loading.set(false)
             if err
               console.log err
               error err.reason

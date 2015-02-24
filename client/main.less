@@ -17,6 +17,7 @@
 @textColor4: #FF4136;
 
 
+@statusBarHeight: 10px;
 @navHeight: 90px;
 @navNotificationHeight: 25px;
 @rowHeight: 55px;
@@ -128,9 +129,10 @@ body {
   top: 0;
   background-color: @color1;
   height: @navHeight;
+  padding-top: @statusBarHeight;
   width: 100%;
   text-align: center;
-  line-height: @navHeight;
+  line-height: @navHeight - @statusBarHeight;
   &.disconnected {
     height: @navHeight + @navNotificationHeight;
   }
@@ -171,14 +173,14 @@ body {
       font-size: @octiconNavSize;
     }
     color: @textColor1;
-    line-height: @navHeight;
+    line-height: @navHeight - @statusBarHeight;
     * {
       vertical-align: middle;
     }
   }
   .right {
     position: absolute;
-    top: 0;
+    top: @statusBarHeight;
     right: 0;
     padding-left: 25px;
     padding-right: 15px;
@@ -186,7 +188,7 @@ body {
   }
   .left {
     position: absolute;
-    top: 0;
+    top: @statusBarHeight;
     left: 0;
     padding-left: 15px;
     padding-right: 25px;
